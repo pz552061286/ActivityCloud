@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#a40035",
+    "navigationBarTitleText": "热门活动",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#000000",
+    "selectedColor": "#EB5B5B",
+    "backgroundColor": "#F7F7F7",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "活动",
+        "iconPath": "./images/icon-ballon1.png",
+        "selectedIconPath": "./images/icon-ballon.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "个人",
+        "iconPath": "./images/icon-people.png",
+        "selectedIconPath": "./images/icon-people1.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
