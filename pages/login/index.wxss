@@ -1,0 +1,22 @@
+/* pages/login/login.wxss */
+.headerBox {
+  position: relative;
+}
+
+.header-content {
+  position: absolute;
+  padding: 0 32rpx;
+}
+
+.header-content .line-text1 {
+  font-size: 62rpx;
+  color: #fff;
+  font-weight: bolder;
+  margin-bottom: 38rpx;
+}
+
+.header-content .line-text2 {
+  font-size: 42rpx;
+  color: #fff;
+  font-weight: 500;
+}

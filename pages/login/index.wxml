@@ -1,0 +1,10 @@
+<!--pages/login/login.wxml-->
+<view>
+	<view class="headerBox">
+		<image src="../../images/bg-01.png" style="width:100%"></image>
+		<view class="header-content" style="top:{{statusBarHeight+60}}px">
+			<view class="line-text1">久事活动云</view>
+			<view class="line-text2">欢迎您的加入</view>
+		</view>
+	</view>
+</view>

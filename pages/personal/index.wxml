@@ -1,0 +1,31 @@
+<!--logs.wxml-->
+<view>
+	<view class="imgBox">
+		<image src="../../images/icon-top1.png"></image>
+	</view>
+	<view class="flex flex-direction align-center iconBox" style="margin-top:-120rpx">
+		<image src="../../images/icon-top.png"></image>
+		<view class="fz18 fontBold" style="margin:26rpx 0;color:#000">UEERNAME</view>
+		<view class="color2e">上海久事数字科技有限公司工会委员会</view>
+	</view>
+
+	<view class="contentBox">
+		<view class="fz16 color00 fontBold" style="margin:32rpx 0">我参与的活动</view>
+		<view>
+			<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/testImages/351501168502898688.png" mode="widthFix"></image>
+		</view>
+
+		<view class="flex align-center justify-between conent-btm">
+			<view>
+				<view class="color00 font500" style="margin-bottom:14rpx">集团工会健步行 </view>
+				<view class="color5f fz12">
+					<image src="../../images/icon-map.png" class="mapIcon"></image>
+					<text>活动范围：科技公司</text>
+				</view>
+			</view>
+			<view>
+				<button class="color00">查看</button>
+			</view>
+		</view>
+	</view>
+</view>

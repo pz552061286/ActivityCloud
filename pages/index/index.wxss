@@ -2,22 +2,6 @@ page {
   color: #000000;
 }
 
-.color6c {
-  color: #6C6C6C;
-}
-
-.color60 {
-  color: #6C6C6C;
-}
-
-
-.font500 {
-  font-weight: 500;
-}
-
-.fz12 {
-  font-size: 24rpx;
-}
 
 .flexBox {
   display: flex;

@@ -16,17 +16,18 @@ Page({
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
     console.log(this.data.currentIndex);
-    
+
+  },
+  toPersonal() {
+    wx.navigateTo({
+      url: '../login/index',
+    })
   },
 
   onLoad: function () {
     _this = this
-    wx.getSystemInfo({
-      success(res) {
-        _this.setData({
-          topNum: res.statusBarHeight - 2
-        })
-      }
+    this.setData({
+      topNum: app.Data.statusBarHeight
     })
   },
 

@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/personal/index",
+    "pages/login/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,7 +24,7 @@
         "selectedIconPath": "./images/icon-ballon.png"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/personal/index",
         "text": "个人",
         "iconPath": "./images/icon-people.png",
         "selectedIconPath": "./images/icon-people1.png"

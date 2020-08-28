@@ -27,7 +27,7 @@
 
 			<view class="flex justify-around align-center buttonBox">
 				<button class="emptyButton">活动说明</button>
-				<button>立即参与</button>
+				<button catchtap="toPersonal">立即参与</button>
 			</view>
 			<view class="hrClass"></view>
 

@@ -6,6 +6,6 @@ Page({
     logs: []
   },
   onLoad: function () {
-    
+  
   }
 })

@@ -1,0 +1,52 @@
+page {
+  font-size: 28rpx;
+}
+
+.imgBox {
+  height: 330rpx;
+}
+
+.imgBox>image {
+  width: 100%;
+  height: 100%;
+}
+
+.iconBox image {
+  width: 229rpx;
+  height: 222rpx;
+}
+
+.contentBox {
+  padding: 40rpx;
+}
+
+.contentBox image {
+  width: 100%;
+}
+
+.conent-btm {
+  padding: 20rpx;
+  background-color: #F7F7F7;
+  border-radius: 2px;
+}
+
+.conent-btm .mapIcon {
+  width: 24rpx;
+  height: 25rpx;
+  vertical-align: middle;
+}
+
+.conent-btm button {
+  width: 158rpx !important;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 28rpx;
+  font-weight: 500;
+  border-radius: 100px;
+  letter-spacing: 1px;
+  background-color: #EF4F4F;
+  line-height: unset;
+}
