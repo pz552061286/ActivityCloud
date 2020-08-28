@@ -26,7 +26,7 @@
 			</view>
 
 			<view class="flex justify-around align-center buttonBox">
-				<button class="emptyButton">活动说明</button>
+				<button class="emptyButton" catchtap="tohealthy">活动说明</button>
 				<button catchtap="toPersonal">立即参与</button>
 			</view>
 			<view class="hrClass"></view>

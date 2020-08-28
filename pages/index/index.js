@@ -23,6 +23,12 @@ Page({
       url: '../login/index',
     })
   },
+  tohealthy() {
+    wx.navigateTo({
+      url: '../healthLine/index',
+    })
+  },
+
 
   onLoad: function () {
     _this = this

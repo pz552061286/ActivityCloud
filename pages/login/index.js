@@ -6,9 +6,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-    statusBarHeight: 0
+    statusBarHeight: 0,
+    picker: ['喵喵喵', '汪汪汪', '哼唧哼唧'],
+    pickerIndex: null,
+    yzmtext: '获取验证码',
+    yzmFlag: true
   },
 
+  PickerChange(e) {
+    this.setData({
+      pickerIndex: e.detail.value
+    })
+  },
+  getYzm() {
+    if (!this.data.yzmFlag) {
+      return
+    }
+    this.setData({
+      yzmtext: '60 s',
+      yzmFlag: false
+    })
+    var num = 60
+    var timer = setInterval(() => {
+      num--;
+      this.setData({
+        yzmtext: num + ' s'
+      })
+      if (num == 0) {
+        clearInterval(timer)
+        this.setData({
+          yzmtext: '获取验证码',
+          yzmFlag: true
+        })
+      }
+    }, 1000)
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */

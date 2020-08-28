@@ -12,9 +12,11 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 }
-.color00{
+
+.color00 {
   color: #000;
 }
+
 .color6c {
   color: #6C6C6C;
 }
@@ -22,13 +24,21 @@
 .color60 {
   color: #6C6C6C;
 }
-.color5f{
-  color:  #5F5F5F;
+
+.color5f {
+  color: #5F5F5F;
 }
 
 
 .font500 {
   font-weight: 500;
+}
+
+.font800 {
+  font-weight: 800;
+}
+.font700{
+  font-weight: 700;
 }
 
 .fontBold {
@@ -38,7 +48,8 @@
 .fz12 {
   font-size: 24rpx;
 }
-.fz16{
+
+.fz16 {
   font-size: 32rpx;
 }
 

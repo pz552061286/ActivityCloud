@@ -1,0 +1,98 @@
+/* pages/healthLine/index.wxss */
+page{
+  color: #333;
+}
+.cu-custom .cu-bar {
+  padding-right: 0 !important;
+}
+
+.contentBox {
+  padding: 0 30rpx;
+}
+
+.title {
+  font-size: 38rpx;
+  font-weight: 800;
+  color: #333;
+  padding: 54rpx 0;
+}
+
+.smallTitle {
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.smallText {
+  color: #878787;
+  font-size: 28rpx;
+}
+
+.content-iconBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50rpx 0;
+}
+
+.content-iconBox image {
+  min-width: 64rpx;
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 10rpx;
+}
+
+.content-iconBox>view {
+  width: 209rpx;
+  height: 92rpx;
+  border: 1px solid #d1d1d1;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10rpx;
+  color: #333;
+  font-weight: 800;
+  font-size: 24rpx;
+}
+
+
+/* wxss */
+/* 这里的宽高是必须大于等于canvas圆环的直径 否则绘制到盒子外面就看不见了 */
+/* 一开始设置 width:440rpx; height:440rpx; 发现 在360X640分辨率的设备，下绘制的圆环跑盒子外去了 */
+/* 小程序使用rpx单位适配 ，但是canvas绘制的是px单位的。所以只能用px单位绘制的圆环在盒子内显示 */
+.progress_box{
+  position: relative;
+  width:220px;
+  height: 220px;  
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+ }
+ .progress_bg{
+  position: absolute;
+  width:220px;
+  height: 220px;
+ }
+ .progress_canvas{
+  width:220px;
+  height: 220px;
+ }
+ .progress_text{
+  position: absolute;
+  display: flex;  
+  align-items: center;
+  justify-content: center
+ }
+ .progress_info{  
+  font-size: 36rpx;
+  padding-left: 16rpx;
+  letter-spacing: 2rpx
+ }
+ .progress_dot{
+  width:16rpx;
+  height: 16rpx;  
+  border-radius: 50%;
+  background-color: #fb9126;
+ }

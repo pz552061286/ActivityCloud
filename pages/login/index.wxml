@@ -3,8 +3,37 @@
 	<view class="headerBox">
 		<image src="../../images/bg-01.png" style="width:100%"></image>
 		<view class="header-content" style="top:{{statusBarHeight+60}}px">
-			<view class="line-text1">久事活动云</view>
+			<view class="line-text1 flex align-center">
+				<image src="../../images/icon-top2.png" style="width:64rpx;height:64rpx;vertical-align:mdiddle;margin-right:10rpx"></image>
+				<text>久事活动云</text>
+			</view>
 			<view class="line-text2">欢迎您的加入</view>
 		</view>
 	</view>
+	<form>
+		<view style="padding:0 30rpx">
+			<view class="cu-form-group margin-top">
+				<picker bindchange="PickerChange" value="{{pickerIndex}}" range="{{picker}}">
+					<view class="picker" style="text-align:left">
+						<text wx:if="{{pickerIndex}}">{{picker[pickerIndex]}}</text>
+						<text wx:else style="color:#c1c1c1">所属工会</text>
+					</view>
+				</picker>
+			</view>
+			<view class="cu-form-group">
+				<input placeholder="请输入姓名" placeholder-style="color:#C1C1C1" maxlength="10"></input>
+			</view>
+			<view class="cu-form-group">
+				<input placeholder="请输入手机号" maxlength="11" placeholder-style="color:#C1C1C1"></input>
+				<text style="color:#c1c1c1" catchtap="getYzm">{{yzmtext}}</text>
+			</view>
+			<view class="cu-form-group">
+				<input placeholder="请输入验证码" placeholder-style="color:#C1C1C1" maxlength="6"></input>
+			</view>
+			<view class="cu-form-group sendButton" style="padding-top:60rpx">
+				<button class="cu-btn bg-red margin-tb-sm lg round">注册</button>
+			</view>
+		</view>
+
+	</form>
 </view>

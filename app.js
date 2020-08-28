@@ -3,6 +3,19 @@ App({
   onLaunch: function () {
     wx.getSystemInfo({
       success: res => {
+        this.Data.StatusBar = res.statusBarHeight;
+        let capsule = wx.getMenuButtonBoundingClientRect();
+        if (capsule) {
+          this.Data.Custom = capsule;
+          this.Data.CustomBar = capsule.bottom - capsule.top / 2 + 2;
+          console.log(capsule);
+          console.log('btm80  top48  pading30px');
+          console.log('btm56  top24  pading18px');
+          
+        } else {
+          this.Data.CustomBar = res.statusBarHeight + 50;
+        }
+
         this.Data.statusBarHeight = res.statusBarHeight - 2
       }
     })

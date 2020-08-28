@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/index",
     "pages/personal/index",
-    "pages/login/index"
+    "pages/login/index",
+    "pages/healthLine/index",
+    "components/customNav"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -11,13 +13,15 @@
     "navigationBarTextStyle": "white",
     "navigationStyle": "custom"
   },
+  "usingComponents": {
+    "customNav": "/components/customNav"
+  },
   "tabBar": {
     "color": "#000000",
     "selectedColor": "#EB5B5B",
     "backgroundColor": "#F7F7F7",
     "borderStyle": "white",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "活动",
         "iconPath": "./images/icon-ballon1.png",

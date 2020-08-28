@@ -1,0 +1,58 @@
+<customNav title-text="健康行" back-icon="/images/back.png" background="#f2f2f2" bindback="back" />
+<view>
+	<view>
+		<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/ServicesMaintainImages/351768804595859456.png"></image>
+	</view>
+	<view class="contentBox">
+		<view class="title">健步行</view>
+		<view style="margin-bottom:30rpx">
+			<text class="smallTitle">活动期限：</text>
+			<text class="smallText">2020年9月10日——2020年10月16日</text>
+		</view>
+		<view>
+			<text class="smallTitle">当前参与人数：</text>
+			<text class="smallText">800人</text>
+		</view>
+
+		<view class="content-iconBox">
+			<view>
+				<image src="../../images/icon-conetnt.png"></image>
+				<text>规则说明</text>
+			</view>
+			<view>
+				<image src="../../images/icon-conetnt2.png"></image>
+				<text>规则说明</text>
+			</view>
+			<view>
+				<image src="../../images/icon-conetnt3.png"></image>
+				<text>规则说明</text>
+			</view>
+		</view>
+		<view class="font500" style="margin-bottom:30rpx">按规则完成任务</view>
+		<view class="font800;" style="font-size:34rpx;margin-bottom:20rpx">
+			您当前步数达到：<text class="font700" style="color:#eb4d4d">3333</text>步，还需要<text style="color:#eb4d4d" class="font700">222</text>步
+		</view>
+
+		<view>
+			<text style="color:#111" class="font500">每周步数达到：</text>
+			<text style="color:#878787">56000步</text>
+		</view>
+
+		<view class="container">
+			<view class='progress_box'>
+				<canvas class="progress_bg" canvas-id="canvasProgressbg"> </canvas>
+				<canvas class="progress_canvas" canvas-id="canvasProgress"> </canvas>
+				<view class="progress_text">
+					<view class="progress_dot"></view>
+					<text class='progress_info'> {{progress_txt}}</text>
+				</view>
+			</view>
+		</view>
+
+
+
+	</view>
+
+
+
+</view>
