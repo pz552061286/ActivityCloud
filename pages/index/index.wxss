@@ -2,6 +2,16 @@ page {
   color: #000000;
 }
 
+.loginBox .cu-dialog {
+  box-sizing: border-box;
+  padding: 40rpx 0;
+  width: 580rpx;
+}
+
+.loginBox .cu-dialog button {
+  font-weight: normal;
+  font-size: 28rpx;
+}
 
 .flexBox {
   display: flex;
@@ -90,10 +100,10 @@ page {
   height: 1px;
   background: #888888;
   opacity: 0.14;
-  margin: 24rpx 0 ;
+  margin: 24rpx 0;
 }
 
-#topNav{
+#topNav {
   position: sticky;
   z-index: 99999;
   height: 48px;

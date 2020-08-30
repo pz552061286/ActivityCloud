@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view>
-	<view  class="bg-white nav flex justify-center align-center" id="topNav" style="top:0;margin-bottom:{{topNum-20}}px;padding-top:{{topNum}}px">
+	<view class="bg-white nav flex justify-center align-center" id="topNav" style="top:0;margin-bottom:{{topNum-20}}px;padding-top:{{topNum}}px">
 		<view class="cu-item {{currentIndex==0?'currentClass':''}}" bindtap="tabSelect" data-id="0">
 			热门活动
 		</view>
@@ -9,78 +9,35 @@
 		</view>
 	</view>
 	<view hidden="{{currentIndex==1}}">
-		<view class="contentBox">
-			<view class="smallTitle">健步行</view>
-			<view class="content-img">
-				<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/testImages/351501168502898688.png" mode="widthFix" lazy-load></image>
-			</view>
+		<block wx:for="{{5}}">
+			<view class="contentBox">
+				<view class="smallTitle">健步行</view>
+				<view class="content-img">
+					<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/testImages/351501168502898688.png" mode="widthFix" lazy-load></image>
+				</view>
 
-			<view class="flex justify-between align-center" style="padding:35rpx 10rpx 24rpx 10rpx">
-				<text class="font500" style="font-size:30rpx">集团工会健步行</text>
-				<text class="color6c fz12">2020.9.10-2020.11.9</text>
-			</view>
+				<view class="flex justify-between align-center" style="padding:35rpx 10rpx 24rpx 10rpx">
+					<text class="font500" style="font-size:30rpx">集团工会健步行</text>
+					<text class="color6c fz12">2020.9.10-2020.11.9</text>
+				</view>
 
-			<view class="flex align-center conten-map-box">
-				<image src="../../images/icon-map.png" mode="widthFix" lazy-load></image>
-				<text class="color60 fz12">活动范围：上海久事公共交通集团有限...</text>
-			</view>
+				<view class="flex align-center conten-map-box">
+					<image src="../../images/icon-map.png" mode="widthFix" lazy-load></image>
+					<text class="color60 fz12">活动范围：上海久事公共交通集团有限...</text>
+				</view>
 
-			<view class="flex justify-around align-center buttonBox">
-				<button class="emptyButton" catchtap="tohealthy">活动说明</button>
-				<button catchtap="toPersonal">立即参与</button>
-			</view>
-			<view class="hrClass"></view>
+				<view class="flex justify-around align-center buttonBox">
+					<button class="emptyButton" catchtap="tohealthy">活动说明</button>
+					<button catchtap="toPersonal">立即参与</button>
+				</view>
+				<view class="hrClass"></view>
 
-		</view>
-		<view class="contentBox">
-			<view class="smallTitle">健步行</view>
-			<view class="content-img">
-				<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/testImages/351501168502898688.png" mode="widthFix" lazy-load></image>
 			</view>
+		</block>
 
-			<view class="flex justify-between align-center" style="padding:35rpx 10rpx 24rpx 10rpx">
-				<text class="font500" style="font-size:30rpx">集团工会健步行</text>
-				<text class="color6c fz12">2020.9.10-2020.11.9</text>
-			</view>
-
-			<view class="flex align-center conten-map-box">
-				<image src="../../images/icon-map.png" mode="widthFix"></image>
-				<text class="color60 fz12">活动范围：上海久事公共交通集团有限...</text>
-			</view>
-
-			<view class="flex justify-around align-center buttonBox">
-				<button class="emptyButton">活动说明</button>
-				<button>立即参与</button>
-			</view>
-			<view class="hrClass"></view>
-
-		</view>
-		<view class="contentBox">
-			<view class="smallTitle">健步行</view>
-			<view class="content-img">
-				<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/testImages/351501168502898688.png" mode="widthFix" lazy-load></image>
-			</view>
-
-			<view class="flex justify-between align-center" style="padding:35rpx 10rpx 24rpx 10rpx">
-				<text class="font500" style="font-size:30rpx">集团工会健步行</text>
-				<text class="color6c fz12">2020.9.10-2020.11.9</text>
-			</view>
-
-			<view class="flex align-center conten-map-box">
-				<image src="../../images/icon-map.png" mode="widthFix"></image>
-				<text class="color60 fz12">活动范围：上海久事公共交通集团有限...</text>
-			</view>
-
-			<view class="flex justify-around align-center buttonBox">
-				<button class="emptyButton">活动说明</button>
-				<button>立即参与</button>
-			</view>
-			<view class="hrClass"></view>
-
-		</view>
 	</view>
 
-  <view hidden="{{currentIndex==0}}">
+	<view hidden="{{currentIndex==0}}">
 		<view class="contentBox">
 			<view class="smallTitle">知识答题</view>
 			<view class="content-img">
@@ -106,4 +63,16 @@
 		</view>
 	</view>
 
+</view>
+
+<view class="cu-modal loginBox {{loginModel?'show':''}}" catchtouchmove="move">
+	<view class="cu-dialog" catchtap>
+		<view>
+			<image src="../../images/wechat.png" style="width:70rpx;height:90rpx;min-width:90rpx;font-size:30rpx"></image>
+		</view>
+		<view style="margin:20px 0;font-weight:600">授权登录后即可操作</view>
+		<view>
+			<button class="bg-green round" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">授权登录</button>
+		</view>
+	</view>
 </view>

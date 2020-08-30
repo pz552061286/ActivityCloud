@@ -1,0 +1,35 @@
+page {
+  background-color: #ef4f4f;
+}
+
+.top-text {
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  color: #fff;
+  font-size: 90rpx;
+  font-weight: bolder;
+
+}
+
+.top-text view:nth-child(2) {
+  font-weight: normal;
+  color: #fecdcd;
+  font-size: 24rpx;
+  margin-top: 40rpx;
+}
+
+.topBox {
+  min-height: 290rpx;
+  background-color: #fff;
+  padding: 32rpx;
+  border-radius: 30rpx;
+  box-shadow: 0px 8px 37px 6px rgba(134, 21, 21, 0.42);
+  position: relative;
+  top: -174rpx;
+  box-sizing: border-box;
+}
+
+.winnerName view{
+  flex: 1;
+}

@@ -1,0 +1,95 @@
+<customNav title-text="健康行排名" back-icon="/images/back1.png" background="#f35c5c" bindback="back" color="#fff" />
+<view>
+	<view style="position:relative">
+		<image src="../../images/bg-03.png" style="width:100%" mode="widthFix"></image>
+		<view class="flex justify-between topCanvas">
+			<view class="flex flex-direction align-center">
+				<view class='progress_box'>
+					<canvas class="progress_bg" canvas-id="canvasProgressbg"> </canvas>
+					<canvas class="progress_canvas" canvas-id="canvasProgress"> </canvas>
+					<view class="progress_text">
+						<text class='progress_info' style="color:#ffe259;font-size:44rpx">{{bushu}}<text style="color:#fff;font-size:24rpx">步</text></text>
+						<text class='progress_info' style="color:#fff;font-size:18rpx;margin-bottom:20rpx">周最佳成绩:12:23:33</text>
+						<text class='progress_info' style="color:#fff;font-size:20rpx">您的本月成绩</text>
+					</view>
+				</view>
+				<view class="fz12" style="color:#fff">加油哦~你还可以更棒!</view>
+			</view>
+		</view>
+	</view>
+	<!-- -------------------- -->
+	<view class="flex  align-center margin-top margin-bottom" style="justify-content:space-evenly;">
+		<view class="{{currentIndex==0?'currentClass':''}}" data-index="0" bindtap="tabSelect">本周排名</view>
+		<view class="{{currentIndex==1?'currentClass':''}}" data-index="1" bindtap="tabSelect">本月排名</view>
+	</view>
+	<view style="padding:20rpx">
+		<view hidden="{{currentIndex==1}}">
+			<block wx:for="{{12}}">
+				<view class="flex justify-between align-center userItem">
+					<view class="flex align-center itemLeft">
+						<view class="trophyImg" wx:if="{{index==0}}">
+							<image src="../../images/one.png"></image>
+						</view>
+						<view class="trophyImg" wx:if="{{index==1}}">
+							<image src="../../images/two.png"></image>
+						</view>
+						<view class="trophyImg" wx:if="{{index==2}}">
+							<image src="../../images/three.png"></image>
+						</view>
+						<view class="trophyImg flex justify-center align-center" wx:if="{{index>2}}">
+							<view class="notTrop">{{index+1}}</view>
+						</view>
+						<!-- 用户头像 -->
+						<view class="userAvator">
+							<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/ServicesMaintainImages/352112119388307456.jpg" class=""></image>
+						</view>
+						<view class="userNameBox">刘吸灰夫斯基</view>
+					</view>
+					<view class="flex flex-direction flex-end">
+						<view class="font700" style="text-align:right;margin-bottom:10rpx">10328<text class="smallText">步</text></view>
+						<view class="smallText">11小时22分钟22秒</view>
+					</view>
+				</view>
+			</block>
+
+
+
+		</view>
+
+		<view hidden="{{currentIndex==0}}">
+			<block wx:for="{{2}}">
+				<view class="flex justify-between align-center userItem">
+					<view class="flex align-center itemLeft">
+						<view class="trophyImg" wx:if="{{index==0}}">
+							<image src="../../images/one.png"></image>
+						</view>
+						<view class="trophyImg" wx:if="{{index==1}}">
+							<image src="../../images/two.png"></image>
+						</view>
+						<view class="trophyImg" wx:if="{{index==2}}">
+							<image src="../../images/three.png"></image>
+						</view>
+						<view class="trophyImg flex justify-center align-center" wx:if="{{index>2}}">
+							<view class="notTrop">{{index+1}}</view>
+						</view>
+						<!-- 用户头像 -->
+						<view class="userAvator">
+							<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/ServicesMaintainImages/352115412005027840.jpg" class=""></image>
+						</view>
+						<view class="userNameBox">爱新觉罗飞</view>
+					</view>
+					<view class="flex flex-direction flex-end">
+						<view class="font700" style="text-align:right;margin-bottom:10rpx">666<text class="smallText">步</text></view>
+						<view class="smallText">1小时43分钟56秒</view>
+					</view>
+				</view>
+			</block>
+
+
+
+		</view>
+
+
+	</view>
+
+</view>

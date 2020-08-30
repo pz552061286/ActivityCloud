@@ -2481,6 +2481,7 @@ button.icon.lg {
 	overflow-x: hidden;
 	overflow-y: auto;
 	pointer-events: auto;
+	z-index: 99999;
 }
 
 .cu-dialog {

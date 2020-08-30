@@ -16,6 +16,9 @@
 .color00 {
   color: #000;
 }
+.color11{
+  color: #111;
+}
 
 .color6c {
   color: #6C6C6C;
@@ -27,6 +30,10 @@
 
 .color5f {
   color: #5F5F5F;
+}
+
+.color9f{
+  color: #9f9f9f;
 }
 
 
@@ -56,6 +63,7 @@
 .fz18 {
   font-size: 36rpx;
 }
+
 
 .color2e {
   color: #2E2E2E;

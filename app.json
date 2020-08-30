@@ -4,7 +4,9 @@
     "pages/personal/index",
     "pages/login/index",
     "pages/healthLine/index",
-    "components/customNav"
+    "components/customNav",
+    "pages/winnerList/index",
+    "pages/ranking/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,7 +1,8 @@
 /* pages/healthLine/index.wxss */
-page{
+page {
   color: #333;
 }
+
 .cu-custom .cu-bar {
   padding-right: 0 !important;
 }
@@ -61,38 +62,75 @@ page{
 /* 这里的宽高是必须大于等于canvas圆环的直径 否则绘制到盒子外面就看不见了 */
 /* 一开始设置 width:440rpx; height:440rpx; 发现 在360X640分辨率的设备，下绘制的圆环跑盒子外去了 */
 /* 小程序使用rpx单位适配 ，但是canvas绘制的是px单位的。所以只能用px单位绘制的圆环在盒子内显示 */
-.progress_box{
+.progress_box {
   position: relative;
-  width:220px;
-  height: 220px;  
-  display: flex;  
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #eee;
- }
- .progress_bg{
+  margin-bottom: 14rpx;
+  /* background-color: #eee; */
+}
+
+.progress_bg {
   position: absolute;
-  width:220px;
-  height: 220px;
- }
- .progress_canvas{
-  width:220px;
-  height: 220px;
- }
- .progress_text{
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.progress_canvas {
+  width: 72rpx;
+  height: 72rpx;
+}
+
+.progress_text {
   position: absolute;
-  display: flex;  
+  display: flex;
   align-items: center;
   justify-content: center
- }
- .progress_info{  
-  font-size: 36rpx;
-  padding-left: 16rpx;
-  letter-spacing: 2rpx
- }
- .progress_dot{
-  width:16rpx;
-  height: 16rpx;  
+}
+
+.progress_info {
+  font-size: 28rpx;
+}
+
+.progress_dot {
+  width: 16rpx;
+  height: 16rpx;
   border-radius: 50%;
   background-color: #fb9126;
- }
+}
+
+.submitBox {
+  margin: 70rpx 0;
+}
+
+.submitBox button {
+  font-weight: 500;
+}
+
+.footer image {
+  width: 100%;
+  height: 160rpx;
+  vertical-align: middle;
+}
+
+.cu-modal .cu-dialog {
+  border-radius: 16rpx !important;
+  background-color: #fff;
+  text-align: left;
+}
+
+.resultBar .cu-bar {
+  padding: 0 30rpx;
+}
+
+.locationClass{
+  color: #3277DD;
+  border:1px solid #3277DD;
+  padding: 2rpx 8rpx;
+  margin-right: 6rpx;
+  border-radius: 6rpx;
+  font-size: 18rpx;
+}

@@ -4,8 +4,9 @@
 		<image src="../../images/icon-top1.png"></image>
 	</view>
 	<view class="flex flex-direction align-center iconBox" style="margin-top:-120rpx">
-		<image src="../../images/icon-top.png"></image>
-		<view class="fz18 fontBold" style="margin:26rpx 0;color:#000">UEERNAME</view>
+		<image src="{{userInfo.avatarUrl}}"></image>
+		<view class="fz18 fontBold" style="margin:26rpx 0;color:#000">{{userInfo.nickName}}
+		</view>
 		<view class="color2e">上海久事数字科技有限公司工会委员会</view>
 	</view>
 
@@ -29,3 +30,15 @@
 		</view>
 	</view>
 </view>
+<!-- 
+<view class="cu-modal loginBox {{loginModel?'show':''}}" catchtouchmove="move">
+	<view class="cu-dialog" catchtap>
+		<view>
+			<image src="../../images/wechat.png" style="width:70rpx;height:90rpx;min-width:90rpx;font-size:30rpx"></image>
+		</view>
+		<view style="margin:20px 0;font-weight:600">授权登录后即可操作</view>
+		<view>
+			<button class="bg-green round" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">授权登录</button>
+		</view>
+	</view>
+</view> -->

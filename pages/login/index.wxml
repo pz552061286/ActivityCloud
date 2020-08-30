@@ -21,17 +21,17 @@
 				</picker>
 			</view>
 			<view class="cu-form-group">
-				<input placeholder="请输入姓名" placeholder-style="color:#C1C1C1" maxlength="10"></input>
+				<input placeholder="请输入姓名" placeholder-style="color:#C1C1C1" maxlength="10" bindinput="nameInput"></input>
 			</view>
 			<view class="cu-form-group">
-				<input placeholder="请输入手机号" maxlength="11" placeholder-style="color:#C1C1C1"></input>
+				<input placeholder="请输入手机号" maxlength="11" placeholder-style="color:#C1C1C1" bindinput="telInput"></input>
 				<text style="color:#c1c1c1" catchtap="getYzm">{{yzmtext}}</text>
 			</view>
 			<view class="cu-form-group">
-				<input placeholder="请输入验证码" placeholder-style="color:#C1C1C1" maxlength="6"></input>
+				<input placeholder="请输入验证码" placeholder-style="color:#C1C1C1" maxlength="6" bindinput="yzmInput"></input>
 			</view>
 			<view class="cu-form-group sendButton" style="padding-top:60rpx">
-				<button class="cu-btn bg-red margin-tb-sm lg round">注册</button>
+				<button class="cu-btn bg-red margin-tb-sm lg round" bindtap="register">注册</button>
 			</view>
 		</view>
 
