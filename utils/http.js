@@ -22,7 +22,7 @@ function http(url, data, cb) {
         } else {
           wx.showModal({
             title: '温馨提示',
-            content: res.data.msg,
+            content: res.data.msg || '请求出错',
             showCancel: false
           })
         }

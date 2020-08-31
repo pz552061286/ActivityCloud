@@ -14,6 +14,25 @@ Page({
     count: 0, // 设置 计数器 初始为0
     countTimer: null // 设置 定时器 初始为null
   },
+
+  //提交任务
+  subMit() {
+    $http("/ActivityArchives/join", {
+      openId: 1,
+      activityCode: this.data.pageData.activityCode
+    },res=>{
+      if(res.code==200){
+        console.log(res,'提交任务后返回');
+        
+      }
+    })
+  },
+
+
+
+
+
+  //获取页面数据
   getList(cb) {
     $http("/ActivityArchives/detail", {
       openId: 1,

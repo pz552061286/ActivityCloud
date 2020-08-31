@@ -122,3 +122,15 @@
   align-items: center;
   font-size: 18rpx;
 }
+.imMineClass{
+  width: 60rpx;
+  height: 30rpx;
+  min-width: 60rpx;
+  line-height: 30rpx;
+  text-align: center;
+  background-color: #DE3434;
+  color: #fff;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  margin-left: 30rpx;
+}

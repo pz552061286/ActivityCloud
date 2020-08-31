@@ -54,7 +54,7 @@
 		</view>
 
 		<view class="submitBox">
-			<button class="round bg-red">提交任务</button>
+			<button class="round bg-red" bindtap="subMit">提交任务</button>
 		</view>
 	</view>
 	<view class="footer">

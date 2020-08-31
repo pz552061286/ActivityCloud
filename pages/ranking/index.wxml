@@ -44,6 +44,8 @@
 							<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/ServicesMaintainImages/352112119388307456.jpg" class=""></image>
 						</view>
 						<view class="userNameBox">刘吸灰夫斯基</view>
+						<view class="imMineClass">我的</view>
+
 					</view>
 					<view class="flex flex-direction flex-end">
 						<view class="font700" style="text-align:right;margin-bottom:10rpx">10328<text class="smallText">步</text></view>
@@ -77,6 +79,7 @@
 							<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/ServicesMaintainImages/352115412005027840.jpg" class=""></image>
 						</view>
 						<view class="userNameBox">爱新觉罗飞</view>
+						<view class="imMineClass">我的</view>
 					</view>
 					<view class="flex flex-direction flex-end">
 						<view class="font700" style="text-align:right;margin-bottom:10rpx">666<text class="smallText">步</text></view>
