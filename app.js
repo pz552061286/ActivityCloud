@@ -1,7 +1,9 @@
 //app.js
 var $http = require('./utils/http').http
+var _this;
 App({
   onLaunch: function () {
+    _this = this
     wx.getSystemInfo({
       success: res => {
         this.Data.StatusBar = res.statusBarHeight;
@@ -68,7 +70,30 @@ App({
     baseUrl: '',
   },
 
+  getOpenId: (code) => {
+    $http('/user/getOpenId', {
+      code,
+    }, res => {
+      if (res.code == 1) {
+        wx.setStorageSync('openId', res.data.msg);
+      }
+    })
+  },
+
   onShow() {
+    wx.login({
+      success: res => {
+        if (res.code) {
+          this.getOpenId(res.code)
+        }
+      }
+    })
+
+
+
+
+
+
     if (this.Data.userInfo) {
       wx.getSetting({
         success: res => {

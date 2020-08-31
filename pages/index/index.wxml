@@ -9,11 +9,11 @@
 		</view>
 	</view>
 	<view hidden="{{currentIndex==1}}">
-		<block wx:for="{{5}}">
+		<block wx:for="{{pageData}}" wx:key="index">
 			<view class="contentBox">
-				<view class="smallTitle">健步行</view>
+				<view class="smallTitle">{{item.activityName}}</view>
 				<view class="content-img">
-					<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/testImages/351501168502898688.png" mode="widthFix" lazy-load></image>
+					<image src="{{item.activityImg}}" mode="widthFix" lazy-load></image>
 				</view>
 
 				<view class="flex justify-between align-center" style="padding:35rpx 10rpx 24rpx 10rpx">

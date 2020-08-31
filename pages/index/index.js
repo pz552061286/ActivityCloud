@@ -6,6 +6,7 @@ var _this;
 
 Page({
   data: {
+    pageData: [],
     currentIndex: 0,
     scrollLeft: 0,
     titleBarHeight: 0,
@@ -13,6 +14,14 @@ Page({
     loginModel: false
   },
   getList() {
+    $http('/ActivityArchives/list', {}, res => {
+      if (res.code == 200) {
+        console.log(res, '页面列表');
+        this.setData({
+          pageData: res.data
+        })
+      }
+    })
   },
   move(e) {},
   onGetUserInfo(e) {
@@ -69,6 +78,7 @@ Page({
   },
 
   onLoad: function () {
+    this.getList()
     _this = this
     this.setData({
       topNum: app.Data.statusBarHeight
