@@ -40,9 +40,7 @@ Page({
       })
       app.Data.userInfo = e.detail.userInfo
       this.autoLogin()
-      wx.getWeRunData({
-        success: (result) => {},
-      })
+
     } else {
       wx.showToast({
         title: '授权失败',
@@ -73,7 +71,44 @@ Page({
       openId: wx.getStorageSync('openId'),
     }, res => {
       console.log(res);
-          
+      wx.getWeRunData({
+        success: (result) => {
+          console.log(result, '---微信步数');
+          const encryptedData = result.encryptedData
+          const iv = result.iv
+          wx.login({
+            success: res => {
+              if (res.code) {
+                $http('/user/getOpenId', { //通过code拿取session_key
+                  code: res.code
+                }, res => {
+                  if (res.code == 200) {
+                    res.data = JSON.parse(res.data)
+                    wx.setStorageSync('openId', res.data.openid);
+                    $http('/test/test', { //将获取到的值传递至后端解密
+                      encryptedData,
+                      iv,
+                      session_key: res.data.session_key
+                    }, res => {
+
+                    })
+                  }
+                })
+              }
+            }
+          })
+        },
+        fail: res => {
+          wx.showModal({
+            title: '温馨提示',
+            content: '获取微信步数失败，请进入设置开启微信步数权限',
+            showCancel: false,
+            success: res => {
+              wx.openSetting()
+            }
+          })
+        }
+      })
     })
   },
 
@@ -91,7 +126,6 @@ Page({
         console.log(res, 'getsetting');
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-
           wx.getUserInfo({
             success: res => {
               wx.hideLoading()
@@ -122,8 +156,8 @@ Page({
     })
   },
   onShow() {
-    if (!app.Data.userInfo) {
-
+    if (app.Data.userInfo) {
+      // this.autoLogin()
     }
   },
 })

@@ -18,7 +18,7 @@ Page({
   //提交任务
   subMit() {
     $http("/ActivityArchives/join", {
-      openId: 1,
+      openId: wx.getStorageSync('openId'),
       activityCode: this.data.pageData.activityCode
     },res=>{
       if(res.code==200){
@@ -35,7 +35,7 @@ Page({
   //获取页面数据
   getList(cb) {
     $http("/ActivityArchives/detail", {
-      openId: 1,
+      openId: wx.getStorageSync('openId'),
       activityCode: 123456,
     }, res => {
       if (res.code == 200) {

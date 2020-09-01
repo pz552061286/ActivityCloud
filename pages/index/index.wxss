@@ -108,3 +108,8 @@ page {
   z-index: 99999;
   height: 48px;
 }
+
+.loginButton {
+  width: 400rpx;
+  min-width: 400rpx;
+}

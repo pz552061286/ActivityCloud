@@ -72,7 +72,7 @@
 		</view>
 		<view style="margin:20px 0;font-weight:600">授权登录后即可操作</view>
 		<view>
-			<button class="bg-green round" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">授权登录</button>
+			<button class="bg-green round loginButton" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">授权登录</button>
 		</view>
 	</view>
 </view>

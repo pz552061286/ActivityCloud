@@ -77,24 +77,22 @@ App({
       if (res.code == 200) {
         res.data = JSON.parse(res.data)
         wx.setStorageSync('openId', res.data.openid);
-        wx.setStorageSync('session_key', res.data.session_key);
       }
     })
   },
 
+
   onShow() {
-    wx.login({
-      success: res => {
-        if (res.code) {
-          this.getOpenId(res.code)
+
+    if (!wx.getStorageSync('openId')) {
+      wx.login({
+        success: res => {
+          if (res.code) {
+            this.getOpenId(res.code)
+          }
         }
-      }
-    })
-
-
-
-
-
+      })
+    }
 
     if (this.Data.userInfo) {
       wx.getSetting({
@@ -106,6 +104,45 @@ App({
               showCancel: false,
               success: res => {
                 wx.openSetting()
+              }
+            })
+          } else {
+            wx.getWeRunData({
+              success: (result) => {
+                console.log(result, '---微信步数');
+                const encryptedData = result.encryptedData
+                const iv = result.iv
+                wx.login({
+                  success: res => {
+                    if (res.code) {
+                      $http('/user/getOpenId', { //通过code拿取session_key
+                        code: res.code
+                      }, res => {
+                        if (res.code == 200) {
+                          res.data = JSON.parse(res.data)
+                          wx.setStorageSync('openId', res.data.openid);
+                          $http('/test/test', { //将获取到的值传递至后端解密
+                            encryptedData,
+                            iv,
+                            session_key: res.data.session_key
+                          }, res => {
+
+                          })
+                        }
+                      })
+                    }
+                  }
+                })
+              },
+              fail: res => {
+                wx.showModal({
+                  title: '温馨提示',
+                  content: '获取微信步数失败，请进入设置开启微信步数权限',
+                  showCancel: false,
+                  success: res => {
+                    wx.openSetting()
+                  }
+                })
               }
             })
           }
