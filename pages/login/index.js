@@ -43,7 +43,7 @@ Page({
       return
     }
     $http('/user/register', {
-      openId: 1,
+      openId: wx.getStorageSync('openId'),
       tel: this.data.tel,
       verificationCode: this.data.verificationCode,
       name: this.data.name,

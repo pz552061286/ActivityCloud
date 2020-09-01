@@ -74,8 +74,10 @@ App({
     $http('/user/getOpenId', {
       code,
     }, res => {
-      if (res.code == 1) {
-        wx.setStorageSync('openId', res.data.msg);
+      if (res.code == 200) {
+        res.data = JSON.parse(res.data)
+        wx.setStorageSync('openId', res.data.openid);
+        wx.setStorageSync('session_key', res.data.session_key);
       }
     })
   },

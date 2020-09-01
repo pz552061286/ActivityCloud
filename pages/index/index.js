@@ -70,10 +70,10 @@ Page({
   },
   autoLogin() {
     $http('/user/autoLogin', {
-      openId: 1,
+      openId: wx.getStorageSync('openId'),
     }, res => {
       console.log(res);
-
+          
     })
   },
 
