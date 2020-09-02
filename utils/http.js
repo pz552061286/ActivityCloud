@@ -1,13 +1,13 @@
 var baseUrl = "http://121.196.34.123:11017"
 
-function http(url, data, cb) {
+function http(url, data, cb, method = 'post') {
   wx.showLoading({
     title: '加载中',
     mask: true
   })
   wx.request({
     url: baseUrl + url,
-    method: 'post',
+    method,
     data,
     header: {
       "content-type": "application/x-www-form-urlencoded"
@@ -15,7 +15,7 @@ function http(url, data, cb) {
     success: res => {
       wx.hideLoading()
       if (res.data.code != 200 && res.data.code != 1) {
-        if (url == "/user/autoLogin") {  //如果没有注册直接跳转注册界面
+        if (url == "/user/autoLogin") { //如果没有注册直接跳转注册界面
           wx.reLaunch({
             url: '/pages/login/index',
           })

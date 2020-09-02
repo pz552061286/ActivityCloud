@@ -60,7 +60,6 @@ Page({
   countInterval: function (canvasId) {
     // 设置倒计时 定时器 每100毫秒执行一次，计数器count+1 ,耗时6秒绘一圈
     this.countTimer = setInterval(() => {
-      console.log('运行中');
 
       if (this.data.count <= this.data.bushu) {
         /* 绘制彩色圆环进度条  
@@ -71,7 +70,6 @@ Page({
         this.data.count += 1000;
       } else {
         clearInterval(this.countTimer);
-        console.log('结束');
         //规定1000步  走了500步
         // 500 / 1000 = 0.5   1000 /1000=1
         // 用走的步数 除以 规定步数 *2

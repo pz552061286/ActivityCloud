@@ -1,6 +1,9 @@
 //index.js
 //获取应用实例
 var $http = require('../../utils/http').http
+// import {
+//   sendRunData
+// } from '../../utils/sendRun'
 const app = getApp()
 var _this;
 
@@ -16,7 +19,6 @@ Page({
   getList() {
     $http('/ActivityArchives/list', {}, res => {
       if (res.code == 200) {
-        console.log(res, '页面列表');
         this.setData({
           pageData: res.data
         })
@@ -25,7 +27,6 @@ Page({
   },
   move(e) {},
   onGetUserInfo(e) {
-    console.log(e, '=====e');
     if (e.detail.userInfo) {
       wx.showToast({
         title: '登录成功',
@@ -70,10 +71,8 @@ Page({
     $http('/user/autoLogin', {
       openId: wx.getStorageSync('openId'),
     }, res => {
-      console.log(res);
       wx.getWeRunData({
         success: (result) => {
-          console.log(result, '---微信步数');
           const encryptedData = result.encryptedData
           const iv = result.iv
           wx.login({
@@ -84,13 +83,9 @@ Page({
                 }, res => {
                   if (res.code == 200) {
                     res.data = JSON.parse(res.data)
+                    var session_key = res.data.session_key
                     wx.setStorageSync('openId', res.data.openid);
-                    $http('/test/test', { //将获取到的值传递至后端解密
-                      encryptedData,
-                      iv,
-                      session_key: res.data.session_key
-                    }, res => {
-
+                    app.sendRunData(encryptedData, iv, session_key).then(res => {
                     })
                   }
                 })
@@ -123,7 +118,6 @@ Page({
     })
     wx.getSetting({
       success: res => {
-        console.log(res, 'getsetting');
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({

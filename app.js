@@ -1,4 +1,7 @@
 //app.js
+import {
+  sendRunData
+} from './utils/sendRun'
 var $http = require('./utils/http').http
 var _this;
 App({
@@ -109,7 +112,6 @@ App({
           } else {
             wx.getWeRunData({
               success: (result) => {
-                console.log(result, '---微信步数');
                 const encryptedData = result.encryptedData
                 const iv = result.iv
                 wx.login({
@@ -120,16 +122,12 @@ App({
                       }, res => {
                         if (res.code == 200) {
                           res.data = JSON.parse(res.data)
+                          var session_key = res.data.session_key
                           wx.setStorageSync('openId', res.data.openid);
-                          $http('/test/test', { //将获取到的值传递至后端解密
-                            encryptedData,
-                            iv,
-                            session_key: res.data.session_key
-                          }, res => {
-
+                          sendRunData(encryptedData, iv, session_key).then(res => {
                           })
                         }
-                      })
+                      }, 'get')
                     }
                   }
                 })
@@ -150,4 +148,5 @@ App({
       })
     }
   },
+  sendRunData,
 })

@@ -22,7 +22,6 @@ Page({
       activityCode: this.data.pageData.activityCode
     },res=>{
       if(res.code==200){
-        console.log(res,'提交任务后返回');
         
       }
     })
@@ -39,7 +38,6 @@ Page({
       activityCode: 123456,
     }, res => {
       if (res.code == 200) {
-        console.log(res, '详情列表');
         this.setData({
           pageData: res.data,
           titleText: res.data.activityName
@@ -111,7 +109,6 @@ Page({
    */
   onLoad: function (options) {
     this.getList(res => {
-      console.log(res, '回调函数');
       var list = res.paceRange
       list.forEach((item, index) => {
         this.drawProgressbg('canvasProgressbg' + index);
