@@ -1,97 +1,54 @@
+const app = getApp();
 Component({
+  /**
+   * 组件的一些选项
+   */
+  options: {
+    addGlobalClass: true,
+    multipleSlots: true
+  },
+  /**
+   * 组件的对外属性
+   */
   properties: {
-    background: {
+    bgColor: {
       type: String,
-      value: 'rgba(255, 255, 255, 1)'
+      default: ''
+    }, 
+    isCustom: {
+      type: [Boolean, String],
+      default: false
     },
-    color: {
+    isBack: {
+      type: [Boolean, String],
+      default: false
+    },
+    bgImage: {
       type: String,
-      value: 'rgba(0, 0, 0, 1)'
+      default: ''
     },
-    titleText: {
-      type: String,
-      value: '导航栏'
-    },
-    titleImg: {
-      type: String,
-      value: ''
-    },
-    backIcon: {
-      type: String,
-      value: ''
-    },
-    homeIcon: {
-      type: String,
-      value: ''
-    },
-    fontSize: {
-      type: Number,
-      value: 16
-    },
-    iconHeight: {
-      type: Number,
-      value: 19
-    },
-    iconWidth: {
-      type: Number,
-      value: 58
-    }
   },
-  attached: function () {
-    var that = this;
-    that.setNavSize();
-    that.setStyle();
+  /**
+   * 组件的初始数据
+   */
+  data: {
+    StatusBar: app.Data.StatusBar,
+    CustomBar: app.Data.CustomBar,
+    Custom: app.Data.Custom
   },
-  data: {},
+  /**
+   * 组件的方法列表
+   */
   methods: {
-    // 通过获取系统信息计算导航栏高度 
-    setNavSize: function () {
-      var that = this,
-        sysinfo = wx.getSystemInfoSync(),
-        statusHeight = sysinfo.statusBarHeight,
-        isiOS = sysinfo.system.indexOf('iOS') > -1,
-        navHeight;
-      if (!isiOS) {
-        navHeight = 48;
-      } else {
-        navHeight = 44;
-      }
-      that.setData({
-        status: statusHeight,
-        navHeight: navHeight
-      })
-    },
-    setStyle: function () {
-      var that = this,
-        containerStyle, textStyle, iconStyle;
-      containerStyle = [
-        'background:' + that.data.background
-      ].join(';');
-      textStyle = [
-        'color:' + that.data.color,
-        'font-size:' + that.data.fontSize + 'px'
-      ].join(';');
-      iconStyle = [
-        'width: ' + that.data.iconWidth + 'px',
-        'height: ' + that.data.iconHeight + 'px'
-      ].join(';');
-      that.setData({
-        containerStyle: containerStyle,
-        textStyle: textStyle,
-        iconStyle: iconStyle
-      })
-    },
-    // 返回事件 
-    back: function () {
+    BackPage() {
       wx.navigateBack({
         delta: 1
-      })
-      this.triggerEvent('back', {
-        back: 1
-      })
+      });
     },
-    home: function () {
-      this.triggerEvent('home', {});
+    toHome(){
+      wx.reLaunch({
+        url: '/pages/index/index',
+      })
     }
   }
 })

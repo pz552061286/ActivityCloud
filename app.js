@@ -1,7 +1,5 @@
 //app.js
-import {
-  sendRunData
-} from './utils/sendRun'
+import sendRunData from './utils/sendRun'
 var $http = require('./utils/http').http
 var _this;
 App({
@@ -13,13 +11,12 @@ App({
         let capsule = wx.getMenuButtonBoundingClientRect();
         if (capsule) {
           this.Data.Custom = capsule;
-          this.Data.CustomBar = capsule.bottom - capsule.top / 2 + 2;
-
+          this.Data.CustomBar = capsule.bottom + capsule.top - res.statusBarHeight;
         } else {
           this.Data.CustomBar = res.statusBarHeight + 50;
         }
 
-        this.Data.statusBarHeight = res.statusBarHeight - 2
+        this.Data.statusBarHeight = res.statusBarHeight + 24
       }
     })
 
@@ -124,8 +121,7 @@ App({
                           res.data = JSON.parse(res.data)
                           var session_key = res.data.session_key
                           wx.setStorageSync('openId', res.data.openid);
-                          sendRunData(encryptedData, iv, session_key).then(res => {
-                          })
+                          sendRunData(encryptedData, iv, session_key).then(res => {})
                         }
                       }, 'get')
                     }

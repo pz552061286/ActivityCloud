@@ -2,7 +2,7 @@ import {
   http
 } from './http'
 
-export const sendRunData = (encryptedData, sessionkey, iv) => {
+const sendRunData = (encryptedData, sessionkey, iv) => {
   return new Promise((resolve, reject) => {
     http('/StepNums/decrypt', {
       encryptedData,
@@ -17,3 +17,4 @@ export const sendRunData = (encryptedData, sessionkey, iv) => {
     })
   })
 }
+export default sendRunData

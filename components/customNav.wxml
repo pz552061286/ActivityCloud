@@ -1,17 +1,16 @@
-<view class='nav' style='height: {{status + navHeight}}px;position:sticky;top:0;z-index:9999'>
-	<view class='status' style='height: {{status}}px;{{containerStyle}}'></view>
-	<view class='navbar' style='height:{{navHeight}}px;{{containerStyle}}'>
-		<view class='back-icon' wx:if="{{backIcon}}" bindtap='back'>
-			<image src='{{backIcon}}'></image>
-		</view>
-		<view class='home-icon' wx:if="{{homeIcon}}" bindtap='home'>
-			<image src='{{homeIcon}}'></image>
-		</view>
-		<view class='nav-icon' wx:if="{{titleImg}}">
-			<image src='{{titleImg}}' style='{{iconStyle}}'></image>
-		</view>
-		<view class='nav-title' wx:if="{{titleText && !titleImg}}">
-			<text style='{{textStyle}}'>{{titleText}}</text>
-		</view>
-	</view>
+<view class="cu-custom" style="height:{{CustomBar}}px">
+  <view class="cu-bar fixed {{bgImage!=''?'none-bg text-white bg-img':''}} {{bgColor}}" style="height:{{CustomBar}}px;padding-top:{{StatusBar}}px;{{bgImage?'background-image:url(' + bgImage+')':''}}">
+    <view class="action" bindtap="BackPage" wx:if="{{isBack}}">
+      <text class="cuIcon-back"></text>
+      <slot name="backText"></slot>
+    </view>
+    <view class="action border-custom"  wx:if="{{isCustom}}" style="width:{{Custom.width}}px;height:{{Custom.height}}px;margin-left:calc(750rpx - {{Custom.right}}px)">
+      <text class="cuIcon-back" bindtap="BackPage"></text>
+      <text class="cuIcon-homefill" bindtap="toHome"></text>
+    </view>
+    <view class="content" style="top:{{StatusBar}}px">
+      <slot name="content"></slot>
+    </view>
+    <slot name="right"></slot>
+  </view>
 </view>

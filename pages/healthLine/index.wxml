@@ -1,4 +1,7 @@
-<customNav title-text="{{titleText}}" back-icon="/images/back.png" background="#f2f2f2" bindback="back" />
+<customNav bgColor="bg-gradual-blue" isBack="{{true}}">
+	<view slot="backText"></view>
+	<view slot="content">{{titleText}}</view>
+</customNav>
 <view>
 	<view>
 		<image src="{{pageData.img}}" style="width:100%;" mode="widthFix"></image>

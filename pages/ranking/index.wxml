@@ -1,4 +1,7 @@
-<customNav title-text="健康行排名" back-icon="/images/back1.png" background="#f35c5c" bindback="back" color="#fff" />
+<customNav bgColor="bg-gradual-red" isBack="{{true}}">
+	<view slot="backText"></view>
+	<view slot="content">健康行排名</view>
+</customNav>
 <view>
 	<view style="position:relative">
 		<image src="../../images/bg-03.png" style="width:100%" mode="widthFix"></image>

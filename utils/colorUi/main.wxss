@@ -9,7 +9,7 @@
 /* ==================
         初始化
  ==================== */
-page {
+ page {
 	/* Color 可以自定义相关配色 */
 	/* var属性兼容性 --> https://www.caniuse.com/#feat=css-variables */
 	/* 标准色 */
@@ -67,7 +67,7 @@ page {
 	--grayShadow: rgba(114, 130, 138, 0.2);
 	--blackShadow: rgba(26, 26, 26, 0.2);
 
-	/* background-color: var(--ghostWhite); */
+	background-color: var(--ghostWhite);
 	font-size: 28rpx;
 	color: var(--black);
 	font-family: Helvetica Neue, Helvetica, sans-serif;
@@ -82,7 +82,7 @@ textarea,
 label,
 navigator,
 image {
-	/* box-sizing: border-box; */
+	box-sizing: border-box;
 }
 
 .round {
@@ -2481,7 +2481,6 @@ button.icon.lg {
 	overflow-x: hidden;
 	overflow-y: auto;
 	pointer-events: auto;
-	z-index: 99999;
 }
 
 .cu-dialog {

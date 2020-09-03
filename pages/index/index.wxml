@@ -1,4 +1,14 @@
 <!--index.wxml-->
+<!-- <customNav bgColor="bg-white" isBack="{{false}}">
+	<view slot="content" >
+		<view class=" {{currentIndex==0?'currentClass':''}}" bindtap="tabSelect" data-id="0">
+			热门活动
+		</view>
+		<view class=" {{currentIndex==1?'currentClass':''}}" bindtap="tabSelect" data-id="1">
+			与我相关
+		</view>
+	</view>
+</customNav> -->
 <view>
 	<view class="bg-white nav flex justify-center align-center" id="topNav" style="top:0;margin-bottom:{{topNum-20}}px;padding-top:{{topNum}}px">
 		<view class="cu-item {{currentIndex==0?'currentClass':''}}" bindtap="tabSelect" data-id="0">

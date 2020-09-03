@@ -19,8 +19,12 @@ Page({
   getList() {
     $http('/ActivityArchives/list', {}, res => {
       if (res.code == 200) {
+        var pageData = []
+        for (let i = 0; i < 10; i++) {
+          pageData.push(res.data[0])
+        }
         this.setData({
-          pageData: res.data
+          pageData,
         })
       }
     })
@@ -85,8 +89,7 @@ Page({
                     res.data = JSON.parse(res.data)
                     var session_key = res.data.session_key
                     wx.setStorageSync('openId', res.data.openid);
-                    app.sendRunData(encryptedData, iv, session_key).then(res => {
-                    })
+                    app.sendRunData(encryptedData, iv, session_key).then(res => {})
                   }
                 })
               }
