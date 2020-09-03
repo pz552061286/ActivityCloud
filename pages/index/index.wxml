@@ -1,12 +1,8 @@
 <!--index.wxml-->
 <!-- <customNav bgColor="bg-white" isBack="{{false}}">
-	<view slot="content" >
-		<view class=" {{currentIndex==0?'currentClass':''}}" bindtap="tabSelect" data-id="0">
-			热门活动
-		</view>
-		<view class=" {{currentIndex==1?'currentClass':''}}" bindtap="tabSelect" data-id="1">
-			与我相关
-		</view>
+	<view slot="content" class="flex  justify-between align-center">
+		<view class=" {{currentIndex==0?'currentClass':''}}" bind:chekTab="tabSelect" data-id="0" />
+		<view class=" {{currentIndex==1?'currentClass':''}}" bind:chekTab="tabSelect" data-id="1" />
 	</view>
 </customNav> -->
 <view>
@@ -22,23 +18,23 @@
 		<block wx:for="{{pageData}}" wx:key="index">
 			<view class="contentBox">
 				<view class="smallTitle">{{item.activityName}}</view>
-				<view class="content-img">
+				<view class="content-img" bindtap="tohealthy" data-val="0" data-code="{{item.activityCode}}">
 					<image src="{{item.activityImg}}" mode="widthFix" lazy-load></image>
 				</view>
 
 				<view class="flex justify-between align-center" style="padding:35rpx 10rpx 24rpx 10rpx">
-					<text class="font500" style="font-size:30rpx">集团工会健步行</text>
-					<text class="color6c fz12">2020.9.10-2020.11.9</text>
+					<text class="font500" style="font-size:30rpx">{{item.activityName}}</text>
+					<text class="color6c fz12">{{item.activityDate}}</text>
 				</view>
 
 				<view class="flex align-center conten-map-box">
 					<image src="../../images/icon-map.png" mode="widthFix" lazy-load></image>
-					<text class="color60 fz12">活动范围：上海久事公共交通集团有限...</text>
+					<text class="color60 fz12">{{item.labourUnionsSTR}}</text>
 				</view>
 
 				<view class="flex justify-around align-center buttonBox">
-					<button class="emptyButton" catchtap="tohealthy">活动说明</button>
-					<button catchtap="toPersonal">立即参与</button>
+					<button class="emptyButton" catchtap="tohealthy" data-val="1" data-code="{{item.activityCode}}">活动说明</button>
+					<button disabled="{{!item.canJoin}}" class="{{item.canJoin?'':'diableButton'}}" catchtap="joinActivity" data-data="{{item.activityCode}}">立即参与</button>
 				</view>
 				<view class="hrClass"></view>
 
@@ -48,29 +44,31 @@
 	</view>
 
 	<view hidden="{{currentIndex==0}}">
-		<view class="contentBox">
-			<view class="smallTitle">知识答题</view>
-			<view class="content-img">
-				<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/testImages/351539316708605952.png" mode="widthFix" lazy-load></image>
-			</view>
+		<block wx:for="{{ownList}}" wx:key="index">
+			<view class="contentBox">
+				<view class="smallTitle">{{item.activityName}}</view>
+				<view class="content-img" bindtap="tohealthy" data-val="0" data-code="{{item.activityCode}}">
+					<image src="{{item.activityImg}}" mode="widthFix" lazy-load></image>
+				</view>
 
-			<view class="flex justify-between align-center" style="padding:35rpx 10rpx 24rpx 10rpx">
-				<text class="font500" style="font-size:30rpx">公交公司知识答题</text>
-				<text class="color6c fz12">2020.9.10-2020.11.9</text>
-			</view>
+				<view class="flex justify-between align-center" style="padding:35rpx 10rpx 24rpx 10rpx">
+					<text class="font500" style="font-size:30rpx">{{item.activityName}}</text>
+					<text class="color6c fz12">{{item.activityDate}}</text>
+				</view>
 
-			<view class="flex align-center conten-map-box">
-				<image src="../../images/icon-map.png" mode="widthFix"></image>
-				<text class="color60 fz12">活动范围：上海久事公共交通集团有限...</text>
-			</view>
+				<view class="flex align-center conten-map-box">
+					<image src="../../images/icon-map.png" mode="widthFix"></image>
+					<text class="color60 fz12">活动范围：{{item.labourUnionsSTR}}</text>
+				</view>
 
-			<view class="flex justify-around align-center buttonBox">
-				<button class="emptyButton">活动说明</button>
-				<button>立即参与</button>
-			</view>
-			<view class="hrClass"></view>
+				<view class="flex justify-around align-center buttonBox">
+					<button class="emptyButton" catchtap="tohealthy" data-val="1" data-code="{{item.activityCode}}">活动说明</button>
+					<button disabled="{{!item.canJoin}}" class="{{item.canJoin?'':'diableButton'}}" catchtap="joinActivity" data-data="{{item.activityCode}}">立即参与</button>
+				</view>
+				<view class="hrClass"></view>
 
-		</view>
+			</view>
+		</block>
 	</view>
 
 </view>

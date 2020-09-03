@@ -13,9 +13,9 @@
 	<form>
 		<view style="padding:0 30rpx">
 			<view class="cu-form-group margin-top">
-				<picker bindchange="PickerChange" value="{{pickerIndex}}" range="{{picker}}">
+				<picker bindchange="PickerChange" value="{{pickerIndex}}" range="{{labourUnionList}}" range-key="name">
 					<view class="picker" style="text-align:left">
-						<text wx:if="{{pickerIndex}}">{{picker[pickerIndex]}}</text>
+						<text wx:if="{{pickerIndex}}">{{labourUnionList[pickerIndex].name}}</text>
 						<text wx:else style="color:#c1c1c1">所属工会</text>
 					</view>
 				</picker>

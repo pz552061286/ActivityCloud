@@ -10,19 +10,25 @@ Page({
     resultModel: false,
     pageData: null, //页面数据
     titleText: '', //标题名称
-    progress_txt: '24',
     count: 0, // 设置 计数器 初始为0
+    activityCode: '',
     countTimer: null // 设置 定时器 初始为null
   },
 
   //提交任务
   subMit() {
-    $http("/ActivityArchives/join", {
+    $http("/ActivityTask/submit", {
       openId: wx.getStorageSync('openId'),
-      activityCode: this.data.pageData.activityCode
-    },res=>{
-      if(res.code==200){
-        
+      activityCode: this.data.activityCode,
+      num: 1000
+    }, res => {
+      if (res.code == 200) {
+        this.getList()
+        wx.showToast({
+          title: 'res.msg',
+          icon: "success",
+          duration: 2000
+        })
       }
     })
   },
@@ -35,7 +41,7 @@ Page({
   getList(cb) {
     $http("/ActivityArchives/detail", {
       openId: wx.getStorageSync('openId'),
-      activityCode: 123456,
+      activityCode: this.data.activityCode,
     }, res => {
       if (res.code == 200) {
         this.setData({
@@ -108,11 +114,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let val = options.open
+    this.setData({
+      resultModel: Boolean(Number(val)),
+      activityCode: options.code
+    })
+
     this.getList(res => {
-      var list = res.paceRange
+      var list = res.stepNumsDatas
       list.forEach((item, index) => {
         this.drawProgressbg('canvasProgressbg' + index);
-        this.drawCircle(item / 10000 * 2, 'canvasProgress' + index);
+        this.drawCircle(item.currentNum / item.num * 2, 'canvasProgress' + index);
       })
     })
   },

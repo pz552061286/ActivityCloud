@@ -1,4 +1,4 @@
-<customNav bgColor="bg-gradual-red" isBack="{{true}}">
+<customNav bgColor="bg-red" isBack="{{true}}" bgImage="{{bgImg}}">
 	<view slot="backText"></view>
 	<view slot="content">健康行排名</view>
 </customNav>
@@ -25,9 +25,9 @@
 		<view class="{{currentIndex==0?'currentClass':''}}" data-index="0" bindtap="tabSelect">本周排名</view>
 		<view class="{{currentIndex==1?'currentClass':''}}" data-index="1" bindtap="tabSelect">本月排名</view>
 	</view>
-	<view style="padding:20rpx">
+	<view style="padding:20rpx;height:60vh;overflow-y:scroll;padding-bottom:40px">
 		<view hidden="{{currentIndex==1}}">
-			<block wx:for="{{12}}">
+			<block wx:for="{{weekRankList}}" wx:key="index">
 				<view class="flex justify-between align-center userItem">
 					<view class="flex align-center itemLeft">
 						<view class="trophyImg" wx:if="{{index==0}}">
@@ -44,15 +44,15 @@
 						</view>
 						<!-- 用户头像 -->
 						<view class="userAvator">
-							<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/ServicesMaintainImages/352112119388307456.jpg" class=""></image>
+							<image src="{{item.icon}}" ></image>
 						</view>
-						<view class="userNameBox">刘吸灰夫斯基</view>
-						<view class="imMineClass">我的</view>
+						<view class="userNameBox">{{item.name}}</view>
+						<view class="imMineClass" wx:if="{{item.own}}">我的</view>
 
 					</view>
 					<view class="flex flex-direction flex-end">
-						<view class="font700" style="text-align:right;margin-bottom:10rpx">10328<text class="smallText">步</text></view>
-						<view class="smallText">11小时22分钟22秒</view>
+						<view class="font700" style="text-align:right;margin-bottom:10rpx">{{item.stepNums}}<text class="smallText">步</text></view>
+						<view class="smallText">{{item.hours}}</view>
 					</view>
 				</view>
 			</block>
@@ -62,7 +62,7 @@
 		</view>
 
 		<view hidden="{{currentIndex==0}}">
-			<block wx:for="{{2}}">
+			<block wx:for="{{monthRankList}}" wx:key="index">
 				<view class="flex justify-between align-center userItem">
 					<view class="flex align-center itemLeft">
 						<view class="trophyImg" wx:if="{{index==0}}">
@@ -79,23 +79,18 @@
 						</view>
 						<!-- 用户头像 -->
 						<view class="userAvator">
-							<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/ServicesMaintainImages/352115412005027840.jpg" class=""></image>
+							<image src="{{item.icon}}" class=""></image>
 						</view>
-						<view class="userNameBox">爱新觉罗飞</view>
-						<view class="imMineClass">我的</view>
+						<view class="userNameBox">{{item.name}}</view>
+						<view class="imMineClass" wx:if="{{item.own}}">我的</view>
 					</view>
 					<view class="flex flex-direction flex-end">
-						<view class="font700" style="text-align:right;margin-bottom:10rpx">666<text class="smallText">步</text></view>
-						<view class="smallText">1小时43分钟56秒</view>
+						<view class="font700" style="text-align:right;margin-bottom:10rpx">{{item.stepNums}}<text class="smallText">步</text></view>
+						<view class="smallText">{{item.hours}}</view>
 					</view>
 				</view>
 			</block>
-
-
-
 		</view>
-
-
 	</view>
 
 </view>

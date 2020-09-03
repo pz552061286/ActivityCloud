@@ -14,7 +14,7 @@ const sendRunData = (encryptedData, sessionkey, iv) => {
       } else {
         reject(res)
       }
-    })
+    }, 'post', false)
   })
 }
 export default sendRunData

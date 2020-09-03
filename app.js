@@ -27,8 +27,8 @@ App({
     // wx.setStorageSync('logs', logs)
 
     // 登录
-    wx.login({
-      success: res => {
+    // wx.login({
+      // success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         // wx.getWeRunData({
         //   success(res) {
@@ -39,8 +39,8 @@ App({
         //     const cloudID = res.cloudID
         //   }
         // })
-      }
-    })
+      // }
+    // })
     // 获取用户信息
 
     // wx.getSetting({
@@ -121,7 +121,7 @@ App({
                           res.data = JSON.parse(res.data)
                           var session_key = res.data.session_key
                           wx.setStorageSync('openId', res.data.openid);
-                          sendRunData(encryptedData, iv, session_key).then(res => {})
+                          sendRunData(encryptedData, session_key, iv)
                         }
                       }, 'get')
                     }

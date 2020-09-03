@@ -1,9 +1,5 @@
 //index.js
-//获取应用实例
 var $http = require('../../utils/http').http
-// import {
-//   sendRunData
-// } from '../../utils/sendRun'
 const app = getApp()
 var _this;
 
@@ -14,17 +10,19 @@ Page({
     scrollLeft: 0,
     titleBarHeight: 0,
     topNum: 0,
-    loginModel: false
+    loginModel: false,
+    ownList: []
   },
   getList() {
-    $http('/ActivityArchives/list', {}, res => {
+    $http('/ActivityArchives/list', {
+      openId: wx.getStorageSync('openId')
+    }, res => {
       if (res.code == 200) {
-        var pageData = []
-        for (let i = 0; i < 10; i++) {
-          pageData.push(res.data[0])
-        }
+        res.data.forEach(item => {
+          item.labourUnionsSTR = item.labourUnions.join(' - ')
+        })
         this.setData({
-          pageData,
+          pageData: res.data
         })
       }
     })
@@ -56,19 +54,60 @@ Page({
 
   },
   tabSelect(e) {
+    if (e.currentTarget.dataset.id == 1) {
+      this.getOwnList()
+    }
     this.setData({
       currentIndex: e.currentTarget.dataset.id,
-      scrollLeft: (e.currentTarget.dataset.id - 1) * 60
+      // scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
   },
-  toPersonal() {
-    wx.navigateTo({
-      url: '../login/index',
+  //与我相关
+  getOwnList() {
+    $http('/ActivityArchives/relevantList', {
+      openId: wx.getStorageSync('openId')
+    }, res => {
+      if (res.code == 200) {
+        res.data.forEach(item => {
+          item.labourUnionsSTR = item.labourUnions.join(" - ")
+        })
+        this.setData({
+          ownList: res.data
+        })
+      }
     })
   },
-  tohealthy() {
+
+  joinActivity(e) {
+    wx.showModal({
+      title: "温馨提示",
+      content: "是否确认立即参与该活动？",
+      success: res => {
+        if (res.confirm) {
+          var activityCode = e.currentTarget.dataset.data
+          $http("/ActivityArchives/join", {
+            activityCode,
+            openId: wx.getStorageSync('openId')
+          }, res => {
+            if (res.code == 200) {
+              this.getList()
+              wx.showToast({
+                title: res.msg,
+                icon: "success",
+                duration: 2000
+              })
+            }
+          })
+        }
+      }
+    })
+  },
+  tohealthy(e) {
+    console.log(e.currentTarget.dataset.val);
+    let val = e.currentTarget.dataset.val
+    let code = e.currentTarget.dataset.code
     wx.navigateTo({
-      url: '../healthLine/index',
+      url: `../healthLine/index?open=${val}&code=${code}`,
     })
   },
   autoLogin() {
@@ -89,7 +128,7 @@ Page({
                     res.data = JSON.parse(res.data)
                     var session_key = res.data.session_key
                     wx.setStorageSync('openId', res.data.openid);
-                    app.sendRunData(encryptedData, iv, session_key).then(res => {})
+                    app.sendRunData(encryptedData, session_key, iv)
                   }
                 })
               }
@@ -111,7 +150,9 @@ Page({
   },
 
   onLoad: function () {
-    this.getList()
+    if (wx.getStorageSync('openId')) {
+      this.getList()
+    }
     _this = this
     this.setData({
       topNum: app.Data.statusBarHeight

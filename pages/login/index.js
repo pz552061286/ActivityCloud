@@ -8,13 +8,14 @@ Page({
    */
   data: {
     statusBarHeight: 0,
-    picker: ['洪星帮', '东兴帮', '斧头帮'],
     pickerIndex: null,
     yzmtext: '获取验证码',
     yzmFlag: true,
     name: null,
     tel: null,
     verificationCode: null,
+    labourUnionList: [],
+    tradeUnionId: null
   },
   nameInput(e) {
     this.setData({
@@ -31,10 +32,19 @@ Page({
       verificationCode: e.detail.value
     })
   },
+  getLabourUnionList(cb) {
+    $http("/LabourUnion/list", {}, res => {
+      if (res.code == 200) {
+        this.setData({
+          labourUnionList: res.data
+        })
+      }
+    })
+  },
 
   //注册
   register() {
-    if (!this.data.tel || !this.data.name || !this.data.verificationCode) {
+    if (!this.data.tel || !this.data.name || !this.data.verificationCode || !this.data.tradeUnionId) {
       wx.showToast({
         title: '请完整填入选项',
         icon: 'none',
@@ -48,6 +58,7 @@ Page({
       verificationCode: this.data.verificationCode,
       name: this.data.name,
       icon: app.Data.userInfo.avatarUrl,
+      tradeUnionId: this.data.tradeUnionId
     }, res => {
       if (res.code == 200) {
         wx.showToast({
@@ -69,9 +80,14 @@ Page({
   },
   //选择工会
   PickerChange(e) {
+    console.log(this.data.labourUnionList[e.detail.value]);
+    var pickerIndex = e.detail.value
     this.setData({
-      pickerIndex: e.detail.value
+      pickerIndex,
+      tradeUnionId: this.data.labourUnionList[pickerIndex].id
+
     })
+
   },
   //获取验证码
   getYzm() {
@@ -122,6 +138,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getLabourUnionList()
     this.setData({
       statusBarHeight: app.Data.statusBarHeight
     })

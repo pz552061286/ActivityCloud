@@ -35,14 +35,15 @@ page {
 .currentClass:after {
   content: '';
   display: block;
-  width: 22rpx;
+  width: 32rpx;
   height: 6rpx;
   background: #E54042;
-  border-radius: 3px;
+  border-radius: 20px;
   position: absolute;
-  bottom: 16rpx;
+  bottom: 10rpx;
   left: 50%;
-  margin-left: -11rpx;
+  transform: translateX(-50%);
+  
 }
 
 .contentBox {
@@ -66,11 +67,21 @@ page {
 }
 
 .conten-map-box {
-  padding: 0 10rpx 28rpx 10rpx;
+  padding: 0 10rpx;
+  margin-bottom: 28rpx;
+  /* width: 300rpx; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+
 }
 
 .conten-map-box image {
   width: 24rpx;
+  min-width: 24rpx;
+  vertical-align: middle;
 }
 
 .buttonBox button {
@@ -97,6 +108,12 @@ page {
   background-color: #E54042;
 }
 
+.buttonBox .diableButton {
+  background-color: grey !important;
+  border-color: grey !important;
+  color: #ccc !important;
+}
+
 .hrClass {
   height: 1px;
   background: #888888;
@@ -107,7 +124,7 @@ page {
 #topNav {
   position: -webkit-sticky;
   position: sticky;
-  z-index: 99999;
+  z-index: 999;
   height: 48px;
 }
 

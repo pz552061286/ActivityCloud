@@ -1,4 +1,4 @@
-<customNav bgColor="bg-gradual-blue" isBack="{{true}}">
+<customNav bgColor="bg-white" isBack="{{true}}">
 	<view slot="backText"></view>
 	<view slot="content">{{titleText}}</view>
 </customNav>
@@ -8,13 +8,17 @@
 	</view>
 	<view class="contentBox">
 		<view class="title">{{pageData.activityName}}</view>
-		<view style="margin-bottom:30rpx">
+		<view class="margin-bottom">
 			<text class="smallTitle">活动期限：</text>
 			<text class="smallText">{{pageData.termRange}}</text>
 		</view>
-		<view>
+		<view class="margin-bottom">
 			<text class="smallTitle">当前参与人数：</text>
 			<text class="smallText">{{pageData.joinPeopleNum}}</text>
+		</view>
+		<view>
+			<text class="smallTitle">活动范围：</text>
+			<text class="smallText">{{pageData.address}}</text>
 		</view>
 
 		<view class="content-iconBox">
@@ -33,31 +37,31 @@
 		</view>
 		<view class="font500" style="margin-bottom:30rpx">按规则完成任务</view>
 		<view class="font800;" style="font-size:34rpx;margin-bottom:20rpx">
-			您当前步数达到：<text class="font700" style="color:#eb4d4d">3333</text>步，还需要<text style="color:#eb4d4d" class="font700">222</text>步
+			您当前步数达到：<text class="font700" style="color:#eb4d4d">{{pageData.totalStepNums}} </text>步，还需要 <text style="color:#eb4d4d" class="font700">{{pageData.wantingStepNums}} </text>步
 		</view>
 
 		<view style="margin-bottom:35rpx">
 			<text style="color:#111" class="font500">每周步数达到：</text>
-			<text style="color:#878787">56000步</text>
+			<text style="color:#878787">{{pageData.standardStepNums}}步</text>
 		</view>
 
 		<view class="flex justify-between" hidden="{{resultModel}}">
-			<block wx:for="{{pageData.paceRange}}" wx:key="index">
+			<block wx:for="{{pageData.stepNumsDatas}}" wx:key="index">
 				<view class="flex flex-direction align-center">
 					<view class='progress_box'>
 						<canvas class="progress_bg" canvas-id="{{'canvasProgressbg'+index}}"> </canvas>
 						<canvas class="progress_canvas" canvas-id="{{'canvasProgress'+index}}"> </canvas>
 						<view class="progress_text">
-							<text class='progress_info'>24</text>
+							<text class='progress_info'>{{item.date}}</text>
 						</view>
 					</view>
-					<view class="fz12">{{item}}步</view>
+					<view class="fz12">{{item.currentNum}}步</view>
 				</view>
 			</block>
 		</view>
 
-		<view class="submitBox">
-			<button class="round bg-red" bindtap="subMit">提交任务</button>
+		<view class="submitBox" wx:if="{{pageData.submit}}">
+			<button disabled="{{!pageData.submit}}" class="round bg-red {{pageData.submit?'':'diableButton'}}" bindtap="subMit">提交任务</button>
 		</view>
 	</view>
 	<view class="footer">
@@ -77,17 +81,15 @@
 			<view class="fontBold" style="margin-bottom:14rpx">赛事地点</view>
 			<view class="flex align-center">
 				<view class="locationClass">地点</view>
-				<view class="fz12" style="color:#4B4B4B">科技公司</view>
+				<view class="fz12" style="color:#4B4B4B">{{pageData.rules.address}}</view>
 			</view>
 			<view class="fontBold" style="margin:40rpx 0 20rpx 0">得分规则</view>
-			<view class="fz12" style="color:#4b4b4b;line-height:44rpx">
-				<view>1、打卡计时规则</view>
-				<text>健行者是团队活动，组委会在起点设置检录区，所有参加队伍必须集齐三人方可进入起点检录区，若有队员因故缺席则需先办理退出证明后方可进入起点检录区，徒步全程31.8公里，设置5个打卡点，如有队员因故撤下，其他队员需携带此队友号码布并在检查点出示，方可继续打卡，一同完成5个打卡即完成挑战，主办方在终点为挑战成功的队伍颁发证书和奖牌。
-				</text>
-				<view style="height:30rpx"></view>
-				<view>2、活动途中退出</view>
-				<text>1）如有队员有意中途退出，须到最近的打卡站交回计时芯片，未退出的队员带上退出队员的号码布，在下一个站点出示可继续打卡前行。
-				</text>
+			<view class="fz12" style="color:#4b4b4b;line-height:44rpx;max-height:60vh;overflow-y:scroll">
+				<block wx:for="{{pageData.rules.scoreRules}}" wx:key="index">
+					<view>{{item.title}}</view>
+					<text>{{item.content}}</text>
+					<view style="height:30rpx"></view>
+				</block>
 			</view>
 		</view>
 	</view>

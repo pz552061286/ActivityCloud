@@ -2,6 +2,10 @@ page {
   font-size: 28rpx;
 }
 
+image {
+  vertical-align: middle;
+}
+
 .imgBox {
   height: 330rpx;
 }
@@ -52,6 +56,20 @@ page {
   line-height: unset;
 }
 
+.hrClass {
+  height: 1px;
+  background: #888888;
+  opacity: 0.14;
+}
+
+.ellipsisClass {
+  width: 370rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
 
 /* .loginBox .cu-dialog {
   box-sizing: border-box;

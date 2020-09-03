@@ -103,11 +103,15 @@ page {
 }
 
 .submitBox {
-  margin: 70rpx 0;
+  margin-top: 70rpx;
 }
+
 
 .submitBox button {
   font-weight: 500;
+}
+.footer{
+  margin-top: 70rpx;
 }
 
 .footer image {
@@ -133,4 +137,9 @@ page {
   margin-right: 6rpx;
   border-radius: 6rpx;
   font-size: 18rpx;
+}
+
+.diableButton{
+  background: grey !important;
+  color: #ccc !important;
 }

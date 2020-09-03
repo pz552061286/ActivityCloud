@@ -1,20 +1,35 @@
 // pages/winnerList/index.js
+var app = getApp()
+var $http = require('../../utils/http').http
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    list: [],
+    currentList: [], //是否中奖的数据
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getList()
   },
+  getList() {
+    $http('/GainAwardsRecord/list', {
+      openId: wx.getStorageSync('openId')
+    }, res => {
+      if (res.code == 200) {
+        this.setData({
+          list: res.data,
+          currentList:res.currentData
+        })
 
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

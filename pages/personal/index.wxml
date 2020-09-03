@@ -10,35 +10,27 @@
 		<view class="color2e">上海久事数字科技有限公司工会委员会</view>
 	</view>
 
-	<view class="contentBox">
-		<view class="fz16 color00 fontBold" style="margin:32rpx 0">我参与的活动</view>
-		<view>
-			<image src="https://changle-oss.oss-cn-hangzhou.aliyuncs.com/testImages/351501168502898688.png" mode="widthFix"></image>
-		</view>
+	<view class="fz16 color00 fontBold padding-left-lg" style="margin:32rpx 0 10rpx 0">我参与的活动</view>
 
-		<view class="flex align-center justify-between conent-btm">
+	<block wx:for="{{list}}" wx:key="index">
+		<view class="contentBox">
 			<view>
-				<view class="color00 font500" style="margin-bottom:14rpx">集团工会健步行 </view>
-				<view class="color5f fz12">
-					<image src="../../images/icon-map.png" class="mapIcon"></image>
-					<text>活动范围：科技公司</text>
+				<image src="{{item.activityImg}}" mode="widthFix"></image>
+			</view>
+
+			<view class="flex align-center justify-between conent-btm">
+				<view>
+					<view class="color00 font500" style="margin-bottom:14rpx">{{item.activityName}} </view>
+					<view class="color5f fz12 ellipsisClass">
+						<image src="../../images/icon-map.png" class="mapIcon"></image>
+						<text>活动范围：{{item.address}}</text>
+					</view>
+				</view>
+				<view bindtap="toDetail" data-code="{{item.activityCode}}">
+					<button class="color00">查看</button>
 				</view>
 			</view>
-			<view>
-				<button class="color00">查看</button>
-			</view>
 		</view>
-	</view>
+		<view class="hrClass"></view>
+	</block>
 </view>
-<!-- 
-<view class="cu-modal loginBox {{loginModel?'show':''}}" catchtouchmove="move">
-	<view class="cu-dialog" catchtap>
-		<view>
-			<image src="../../images/wechat.png" style="width:70rpx;height:90rpx;min-width:90rpx;font-size:30rpx"></image>
-		</view>
-		<view style="margin:20px 0;font-weight:600">授权登录后即可操作</view>
-		<view>
-			<button class="bg-green round" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">授权登录</button>
-		</view>
-	</view>
-</view> -->
