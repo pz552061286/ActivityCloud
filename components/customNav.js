@@ -14,7 +14,7 @@ Component({
     bgColor: {
       type: String,
       default: ''
-    }, 
+    },
     isCustom: {
       type: [Boolean, String],
       default: false
@@ -31,6 +31,10 @@ Component({
       type: String,
       default: ''
     },
+    currentIndex: {
+      type: [Number, String],
+      default: 0
+    }
   },
   /**
    * 组件的初始数据
@@ -38,7 +42,7 @@ Component({
   data: {
     StatusBar: app.Data.StatusBar,
     CustomBar: app.Data.CustomBar,
-    Custom: app.Data.Custom
+    Custom: app.Data.Custom,
   },
   /**
    * 组件的方法列表
@@ -49,10 +53,16 @@ Component({
         delta: 1
       });
     },
-    toHome(){
+    toHome() {
       wx.reLaunch({
         url: '/pages/index/index',
       })
-    }
+    },
+    tableSelect(e) {
+      this.setData({
+        currentIndex: e.currentTarget.dataset.id
+      })
+      this.triggerEvent("myevent", e.currentTarget.dataset.id)
+    },
   }
 })

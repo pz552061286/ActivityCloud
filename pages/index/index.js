@@ -18,11 +18,15 @@ Page({
       openId: wx.getStorageSync('openId')
     }, res => {
       if (res.code == 200) {
+        var pageData = []
         res.data.forEach(item => {
           item.labourUnionsSTR = item.labourUnions.join(' - ')
         })
+        for (let index = 0; index < 10; index++) {
+          pageData.push(res.data[0])
+        }
         this.setData({
-          pageData: res.data
+          pageData
         })
       }
     })
@@ -42,6 +46,8 @@ Page({
         animation: false,
       })
       app.Data.userInfo = e.detail.userInfo
+      this.getList()
+
       this.autoLogin()
 
     } else {
@@ -53,12 +59,12 @@ Page({
     }
 
   },
-  tabSelect(e) {
-    if (e.currentTarget.dataset.id == 1) {
+  tableSelect(e) {
+    if (e.detail == 1) {
       this.getOwnList()
     }
     this.setData({
-      currentIndex: e.currentTarget.dataset.id,
+      currentIndex: e.detail,
       // scrollLeft: (e.currentTarget.dataset.id - 1) * 60
     })
   },
@@ -103,7 +109,7 @@ Page({
     })
   },
   tohealthy(e) {
-    console.log(e.currentTarget.dataset.val);
+    console.log(this.data.currentIndex, 'cu');
     let val = e.currentTarget.dataset.val
     let code = e.currentTarget.dataset.code
     wx.navigateTo({
@@ -114,38 +120,7 @@ Page({
     $http('/user/autoLogin', {
       openId: wx.getStorageSync('openId'),
     }, res => {
-      wx.getWeRunData({
-        success: (result) => {
-          const encryptedData = result.encryptedData
-          const iv = result.iv
-          wx.login({
-            success: res => {
-              if (res.code) {
-                $http('/user/getOpenId', { //通过code拿取session_key
-                  code: res.code
-                }, res => {
-                  if (res.code == 200) {
-                    res.data = JSON.parse(res.data)
-                    var session_key = res.data.session_key
-                    wx.setStorageSync('openId', res.data.openid);
-                    app.sendRunData(encryptedData, session_key, iv)
-                  }
-                })
-              }
-            }
-          })
-        },
-        fail: res => {
-          wx.showModal({
-            title: '温馨提示',
-            content: '获取微信步数失败，请进入设置开启微信步数权限',
-            showCancel: false,
-            success: res => {
-              wx.openSetting()
-            }
-          })
-        }
-      })
+      app.login()
     })
   },
 
@@ -153,6 +128,7 @@ Page({
     if (wx.getStorageSync('openId')) {
       this.getList()
     }
+
     _this = this
     this.setData({
       topNum: app.Data.statusBarHeight
@@ -194,8 +170,6 @@ Page({
     })
   },
   onShow() {
-    if (app.Data.userInfo) {
-      // this.autoLogin()
-    }
+  
   },
 })

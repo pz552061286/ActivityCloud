@@ -66,18 +66,23 @@ Page({
 
 
   drawProgressbg: function (canvasId) {
+    const arcRadius = (68 / 375) * this.data.windowWidth //半径
+    console.log(arcRadius,'arcRadius');
+    
     // 使用 wx.createContext 获取绘图上下文 context
     var ctx = wx.createCanvasContext(canvasId, this)
     ctx.setLineWidth(6); // 设置圆环的宽度
     ctx.setStrokeStyle('#de3333'); // 设置圆环的颜色
     ctx.setLineCap('round'); // 设置圆环端点的形状
     ctx.beginPath(); // 开始一个新的路径
-    ctx.arc(68, 68, 62, 0, 2 * Math.PI, false);
+    ctx.arc(arcRadius, arcRadius, arcRadius - 6, 0, 2 * Math.PI, false);
     // 设置一个原点(100,100)，半径为90的圆的路径到当前路径
     ctx.stroke(); // 对当前路径进行描边
     ctx.draw();
   },
   drawCircle: function (step, canvasId) {
+    const arcRadius = (68 / 375) * this.data.windowWidth //半径
+
     var context = wx.createCanvasContext(canvasId, this);
     // 设置渐变
     var gradient = context.createLinearGradient(200, 100, 100, 200);
@@ -89,7 +94,7 @@ Page({
     context.setLineCap('round')
     context.beginPath();
     // 参数step 为绘制的圆环周长，从0到2为一周 。 -Math.PI / 2 将起始角设在12点钟位置 ，结束角 通过改变 step 的值确定
-    context.arc(68, 68, 62, -Math.PI * 0.5, -Math.PI / 2 + step * Math.PI);
+    context.arc(arcRadius, arcRadius, arcRadius - 6, -Math.PI * 0.5, -Math.PI / 2 + step * Math.PI);
     context.stroke();
     context.draw();
   },
@@ -120,6 +125,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      windowWidth: app.Data.windowWidth
+    })
     this.getWeekRanking()
     this.getMonthRanking()
   },

@@ -8,16 +8,12 @@
 			<text class="cuIcon-back" bindtap="BackPage"></text>
 			<text class="cuIcon-homefill" bindtap="toHome"></text>
 		</view>
-		<view class="content" style="top:{{StatusBar}}px">
-			<slot name="content" wx:if="{{isMore}}"></slot>
-			<slot name="content" wx:else>
-				<view class=" {{currentIndex==0?'currentClass':''}}" bindtap="tabSelect" data-id="0">
-					热门活动
-				</view>
-				<view class=" {{currentIndex==1?'currentClass':''}}" bindtap="tabSelect" data-id="1">
-					与我相关
-				</view>
-			</slot>
+		<view class="content" style="top:{{StatusBar}}px" wx:if="{{!isMore}}">
+			<slot name="content"></slot>
+		</view>
+		<view class=" content  flex justify-between align-center" style="top:{{StatusBar}}px;pointer-events: auto;line-height:unset;font-size:28rpx" wx:else>
+			<view bindtap="tableSelect" data-id="0" class="{{currentIndex==0?'currentClass':''}}">热门活动</view>
+			<view bindtap="tableSelect" data-id="1" class="{{currentIndex==1?'currentClass':''}}">与我相关</view>
 		</view>
 		<slot name="right"></slot>
 	</view>

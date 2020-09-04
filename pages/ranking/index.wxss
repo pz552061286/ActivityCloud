@@ -5,8 +5,8 @@
 /* 小程序使用rpx单位适配 ，但是canvas绘制的是px单位的。所以只能用px单位绘制的圆环在盒子内显示 */
 .progress_box {
   position: relative;
-  width: 136px;
-  height: 136px;
+  width: 272rpx;
+  height: 272rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,13 +16,13 @@
 
 .progress_bg {
   position: absolute;
-  width: 136px;
-  height: 136px;
+  width: 272rpx;
+  height: 272rpx;
 }
 
 .progress_canvas {
-  width: 136px;
-  height: 136px;
+  width: 272rpx;
+  height: 272rpx;
 }
 
 .progress_text {
@@ -32,8 +32,8 @@
   justify-content: center;
   flex-direction: column;
   background: #ff8d8e;
-  width: 100px;
-  height: 100px;
+  width: 200rpx;
+  height: 200rpx;
   border-radius: 50%;
 
 }
@@ -53,7 +53,7 @@
   position: absolute;
   top: 5%;
   left: 50%;
-  margin-left: -68px;
+  margin-left: -136rpx;
 }
 
 .currentClass {

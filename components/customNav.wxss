@@ -1,0 +1,20 @@
+.currentClass {
+  color: #121F36;
+  font-weight: bold;
+  position: relative;
+  font-size: 34rpx;
+}
+
+.currentClass:after {
+  content: '';
+  display: block;
+  width: 32rpx;
+  height: 6rpx;
+  background: #E54042;
+  border-radius: 20px;
+  position: absolute;
+  bottom: -4rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
